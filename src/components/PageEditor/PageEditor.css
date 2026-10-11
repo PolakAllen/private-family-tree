@@ -1,0 +1,90 @@
+/* Neutral scaffolding: uses system colours so it follows light/dark automatically. */
+.pe-root {
+  color-scheme: light dark;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
+  background: Canvas;
+  color: CanvasText;
+}
+.pe-top {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.5rem 0.75rem;
+  border-bottom: 1px solid color-mix(in srgb, CanvasText 20%, transparent);
+}
+.pe-pager { display: flex; align-items: center; gap: 0.75rem; }
+.pe-pager input { width: 4.5rem; }
+.pe-note, .pe-hint { font-size: 0.9rem; opacity: 0.75; margin: 0; }
+.pe-warning {
+  margin: 0;
+  padding: 0.5rem 0.75rem;
+  background: color-mix(in srgb, gold 30%, Canvas);
+}
+.pe-table { flex: 1; min-height: 0; overflow: auto; }
+.pe-table-inner { position: relative; }
+.pe-dock {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0.75rem;
+  border-top: 1px solid color-mix(in srgb, CanvasText 20%, transparent);
+}
+.pe-controls { display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; }
+.pe-controls > div { display: flex; gap: 0.5rem; }
+.pe-status { flex: 1; text-align: center; font-size: 0.9rem; opacity: 0.75; }
+.pe-errors {
+  margin: 0;
+  padding: 0.5rem 0.75rem 0.5rem 1.5rem;
+  border-left: 3px solid crimson;
+  font-size: 0.9rem;
+}
+.pe-table:focus-visible, .pe-root button:focus-visible { outline: 2px solid Highlight; outline-offset: 2px; }
+@media (max-width: 640px) {
+  .pe-controls { flex-wrap: wrap; }
+}
+
+/** Component styles */
+.pe-crop { background-color: #eef0f3; }
+.pe-header-strip, .pe-header-labels, .pe-row-cells, .pe-editor { display: flex; }
+
+.pe-col-label {
+  flex: 0 0 auto; box-sizing: border-box; padding: 4px 6px; border: 1px solid #cfd5de; border-top: 0;
+  font: 600 12px/1.2 system-ui, sans-serif; text-align: left; overflow: hidden;
+  text-overflow: ellipsis; white-space: nowrap; cursor: pointer;
+}
+.pe-col-label.is-selected { background: #1f5fbf; border-color: #1f5fbf; color: #fff; }
+
+.pe-tools {
+  position: sticky; left: 0; display: flex; flex-wrap: wrap; align-items: center; gap: 8px;
+  width: max-content; max-width: 100%; box-sizing: border-box; padding: 6px 8px;
+  background: #fff; border: 1px solid #1f5fbf; font: 13px system-ui, sans-serif;
+}
+.pe-tools-title { margin-right: 4px; }
+.pe-tools-group { display: inline-flex; align-items: center; gap: 4px; }
+.pe-tools-hint { color: #5b6472; font-size: 12px; }
+
+.pe-row { position: relative; border-bottom: 1px solid #cfd5de; }
+.pe-row.is-selected { outline: 2px solid #1f5fbf; outline-offset: -2px; z-index: 1; }
+.pe-row-cells { cursor: pointer; }
+.pe-row-cells:focus-visible { outline: 2px solid #1f5fbf; outline-offset: 2px; }
+.pe-context { opacity: .5; }
+
+.pe-cell { flex: 0 0 auto; box-sizing: border-box; border-right: 1px solid #cfd5de; overflow: hidden; }
+.pe-cell-text {
+  padding: 2px 4px; font: 12px/1.3 system-ui, sans-serif;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.pe-cell.is-changed .pe-cell-text { background: #fff3d6; color: black; }
+.pe-cell.is-latent .pe-cell-text { font-style: italic; color: #8a5a00; border-top-style: dashed; }
+
+.pe-editor { gap: 8px; overflow-x: auto; padding: 8px 0; }
+.pe-field { flex: 0 0 auto; display: flex; flex-direction: column; gap: 4px; font: 13px system-ui, sans-serif; }
+.pe-field-label { font-weight: 600; }
+.pe-field.is-changed .pe-input { background: #fff3d6; color: black; }
+.pe-input { padding: 4px 6px; border: 1px solid #aab2bf; font: inherit; }
+.pe-input-id { font-family: ui-monospace, monospace; }
+.pe-input-gen { text-align: center; }
+.pe-field-note { font-size: 12px; font-style: italic; color: #8a5a00; }

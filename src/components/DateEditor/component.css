@@ -1,0 +1,98 @@
+/*
+ * Compact, theme-neutral styles. Override these variables on .de-root
+ * (or any ancestor) to match your app:
+ *   --de-accent, --de-bg, --de-fg, --de-radius, --de-height
+ */
+.de-root {
+  --de-accent: #2f6fdb;
+  --de-bg: Canvas;
+  --de-fg: CanvasText;
+  --de-border: color-mix(in srgb, currentColor 28%, transparent);
+  --de-muted: color-mix(in srgb, currentColor 55%, transparent);
+  --de-radius: 4px;
+  --de-height: 1.75rem;
+
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+  font: inherit;
+  font-size: 0.875rem;
+}
+
+.de-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px;
+  min-width: 0;
+}
+
+.de-input {
+  box-sizing: border-box;
+  height: var(--de-height);
+  padding: 0 6px;
+  min-width: 0;
+  font: inherit;
+  color: var(--de-fg);
+  background: var(--de-bg);
+  border: 1px solid var(--de-border);
+  border-radius: var(--de-radius);
+}
+
+.de-input:hover:not(:disabled) {
+  border-color: color-mix(in srgb, currentColor 50%, transparent);
+}
+
+.de-input:focus-visible,
+.de-note-toggle:focus-visible {
+  outline: 2px solid var(--de-accent);
+  outline-offset: 1px;
+}
+
+.de-input:disabled {
+  opacity: 0.55;
+}
+
+.de-input::placeholder {
+  color: var(--de-muted);
+}
+
+.de-precision { width: 5.5rem; }
+.de-month     { width: 4rem; }
+.de-day       { width: 2.75rem; text-align: center; }
+
+.de-year-wrap {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+.de-year { width: 4.25rem; font-variant-numeric: tabular-nums; }
+
+/* "s" after century/decade years (1990 → 1990s) */
+.de-suffix {
+  position: absolute;
+  right: 6px;
+  pointer-events: none;
+  color: var(--de-muted);
+}
+.de-year-wrap:has(.de-suffix) .de-year { padding-right: 14px; }
+
+.de-note { width: 100%; }
+
+.de-note-toggle {
+  height: var(--de-height);
+  padding: 0 4px;
+  font: inherit;
+  color: var(--de-muted);
+  background: none;
+  border: 0;
+  border-radius: var(--de-radius);
+  cursor: pointer;
+}
+.de-note-toggle:hover:not(:disabled) { color: var(--de-accent); }
+
+.de-preview {
+  color: var(--de-muted);
+  font-size: 0.8125rem;
+}

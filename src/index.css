@@ -1,0 +1,13 @@
+/* Replaces Vite's default index.css, which centers #root and would squash the canvas. */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  height: 100%;
+}
