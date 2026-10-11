@@ -3,7 +3,7 @@ import { defineConfig } from 'vite'
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: 'private-family-tree/docs/',
+  base: 'private-family-tree/',
   // Note: base must start with repository name when hosting on github pages
   plugins: [react()],
   build: {
